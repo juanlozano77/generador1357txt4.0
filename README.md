@@ -1,5 +1,5 @@
 # generador1357txt4.0
-Proyecto que genera el archivo txt del formaulario 1357 para importar a la Afip
+Proyecto que genera el archivo txt del formulario 1357 para importar a la Afip
 Muchas veces al manejarnos con planillas de excel y tenemos muchas columnas se nos difulta la compresión o el ingreso de datos.
 El siguiente programa busca facilitar la entrada de datos y su visualización
 
