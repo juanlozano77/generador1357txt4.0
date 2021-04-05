@@ -866,77 +866,11 @@
      <attribute name="title">
       <string>Empresa</string>
      </attribute>
-     <widget class="QGroupBox" name="groupBox">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>20</y>
-        <width>261</width>
-        <height>271</height>
-       </rect>
-      </property>
-      <property name="title">
-       <string>Tipo de Presentación</string>
-      </property>
-      <widget class="QRadioButton" name="radioButton">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>20</y>
-         <width>82</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Anual</string>
-       </property>
-      </widget>
-      <widget class="QRadioButton" name="radioButton_2">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>50</y>
-         <width>82</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Final</string>
-       </property>
-      </widget>
-      <widget class="QRadioButton" name="radioButton_3">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>80</y>
-         <width>82</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Informativa</string>
-       </property>
-      </widget>
-      <widget class="QRadioButton" name="radioButton_4">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>100</y>
-         <width>151</width>
-         <height>41</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Anual 
- Distracto Enero-Marzo</string>
-       </property>
-      </widget>
-     </widget>
      <widget class="QLineEdit" name="cuit">
       <property name="geometry">
        <rect>
-        <x>360</x>
-        <y>30</y>
+        <x>80</x>
+        <y>40</y>
         <width>111</width>
         <height>31</height>
        </rect>
@@ -945,8 +879,8 @@
      <widget class="QSpinBox" name="spinBox">
       <property name="geometry">
        <rect>
-        <x>640</x>
-        <y>30</y>
+        <x>410</x>
+        <y>40</y>
         <width>61</width>
         <height>31</height>
        </rect>
@@ -958,7 +892,7 @@
      <widget class="QLabel" name="label_9">
       <property name="geometry">
        <rect>
-        <x>360</x>
+        <x>100</x>
         <y>10</y>
         <width>47</width>
         <height>13</height>
@@ -971,7 +905,7 @@
      <widget class="QLabel" name="label_10">
       <property name="geometry">
        <rect>
-        <x>480</x>
+        <x>240</x>
         <y>10</y>
         <width>47</width>
         <height>13</height>
@@ -984,8 +918,8 @@
      <widget class="QSpinBox" name="spinBox_6">
       <property name="geometry">
        <rect>
-        <x>480</x>
-        <y>30</y>
+        <x>220</x>
+        <y>40</y>
         <width>81</width>
         <height>31</height>
        </rect>
@@ -1000,21 +934,21 @@
      <widget class="QPushButton" name="aceptar">
       <property name="geometry">
        <rect>
-        <x>550</x>
-        <y>190</y>
-        <width>75</width>
-        <height>23</height>
+        <x>580</x>
+        <y>140</y>
+        <width>101</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="text">
-       <string>Aceptar</string>
+       <string>Confirmar  Datos</string>
       </property>
      </widget>
      <widget class="QSpinBox" name="tipo_presen">
       <property name="geometry">
        <rect>
-        <x>570</x>
-        <y>30</y>
+        <x>330</x>
+        <y>40</y>
         <width>51</width>
         <height>31</height>
        </rect>
@@ -1032,7 +966,7 @@
      <widget class="QLabel" name="label_89">
       <property name="geometry">
        <rect>
-        <x>570</x>
+        <x>330</x>
         <y>10</y>
         <width>47</width>
         <height>13</height>
@@ -1045,7 +979,7 @@
      <widget class="QLabel" name="label_106">
       <property name="geometry">
        <rect>
-        <x>640</x>
+        <x>410</x>
         <y>10</y>
         <width>61</width>
         <height>16</height>
@@ -1055,17 +989,71 @@
        <string>SECUENCIA</string>
       </property>
      </widget>
-     <widget class="QCheckBox" name="checkBox_4">
+     <widget class="QLabel" name="label_109">
       <property name="geometry">
        <rect>
-        <x>440</x>
-        <y>240</y>
-        <width>251</width>
-        <height>41</height>
+        <x>540</x>
+        <y>10</y>
+        <width>161</width>
+        <height>21</height>
        </rect>
       </property>
       <property name="text">
-       <string>Calcular imp. determinado año 2020</string>
+       <string>Seleccionar tipo presentacion</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="comboBox_2">
+      <property name="geometry">
+       <rect>
+        <x>500</x>
+        <y>40</y>
+        <width>211</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <item>
+       <property name="text">
+        <string>Anual</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Final</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Informativa</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Anual - Distracto Enero-Marzo</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QTextBrowser" name="textBrowser">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>120</y>
+        <width>431</width>
+        <height>231</height>
+       </rect>
+      </property>
+      <property name="html">
+       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;El siguiente programa permite ingresar (esperemos que) facilmente los datos y crear un archivo de texto &lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;para su importacion posterior en la pagina de afip correspondiente.&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Tambien puede leer los arhivos txt generados para visualizar si ingresamos los datos correctamente.&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;La app se divide en una pestaña que seria en registro cabecera y otra pestaña con los datos de empleados, que a su vez se divide en otras 5 subpestañas, una por cada tipo de registro (datos del trabajador,remuneraciones,deducciones,deducciones art. 30 y calculo del impuesto)&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Es necesario aclarar que esta app no reemplaza el criterio profesional ni lo dispuesto por la normativa vigente, así como tampoco aquellos programas de liquidacion especificos al respecto. &lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Ante lo expuesto no nos responsabilizamos por ningun tipo de detrimiento o perjuicio que esta app pueda ocasionar.&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Aclaro esto espero que les sea util!&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </widget>
@@ -1147,7 +1135,7 @@
        <widget class="QSpinBox" name="spinBox_2">
         <property name="geometry">
          <rect>
-          <x>170</x>
+          <x>230</x>
           <y>40</y>
           <width>42</width>
           <height>22</height>
@@ -1176,7 +1164,7 @@
        <widget class="QSpinBox" name="spinBox_3">
         <property name="geometry">
          <rect>
-          <x>170</x>
+          <x>230</x>
           <y>70</y>
           <width>42</width>
           <height>22</height>
@@ -1274,7 +1262,7 @@
        <widget class="QLabel" name="label_6">
         <property name="geometry">
          <rect>
-          <x>160</x>
+          <x>230</x>
           <y>20</y>
           <width>47</width>
           <height>13</height>
@@ -1287,7 +1275,7 @@
        <widget class="QLabel" name="label_7">
         <property name="geometry">
          <rect>
-          <x>230</x>
+          <x>170</x>
           <y>20</y>
           <width>47</width>
           <height>13</height>
@@ -1300,7 +1288,7 @@
        <widget class="QSpinBox" name="spinBox_4">
         <property name="geometry">
          <rect>
-          <x>230</x>
+          <x>170</x>
           <y>40</y>
           <width>42</width>
           <height>22</height>
@@ -1316,7 +1304,7 @@
        <widget class="QSpinBox" name="spinBox_5">
         <property name="geometry">
          <rect>
-          <x>230</x>
+          <x>170</x>
           <y>70</y>
           <width>42</width>
           <height>22</height>
@@ -1337,27 +1325,14 @@
        <widget class="QLabel" name="label_105">
         <property name="geometry">
          <rect>
-          <x>20</x>
-          <y>560</y>
+          <x>30</x>
+          <y>550</y>
           <width>121</width>
           <height>31</height>
          </rect>
         </property>
         <property name="text">
          <string>Rem Grav s/ horas Extras</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="totalsinhoras">
-        <property name="geometry">
-         <rect>
-          <x>160</x>
-          <y>570</y>
-          <width>71</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>0.00</string>
         </property>
        </widget>
        <widget class="QLabel" name="label_82">
@@ -2397,6 +2372,19 @@
           </property>
          </widget>
         </widget>
+       </widget>
+       <widget class="QLabel" name="totalsinhoras">
+        <property name="geometry">
+         <rect>
+          <x>170</x>
+          <y>560</y>
+          <width>71</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>0.00</string>
+        </property>
        </widget>
       </widget>
       <widget class="QWidget" name="tab_6">
@@ -4230,6 +4218,74 @@ Equipamientos</string>
          </property>
         </item>
        </widget>
+       <widget class="QPushButton" name="calculo_2020">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>260</y>
+          <width>161</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Calcular Impuesto determinado 
+ anual 2020</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_110">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>330</y>
+          <width>171</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Remuneracion Sujeta a Impuestos</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_111">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>400</y>
+          <width>191</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Remuneracion Sujeta a Imp 
+ sin horas extras 
+ para cal. tramo</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="remsujimp_2">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>360</y>
+          <width>171</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>0.00</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="remsujsihex_2">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>450</y>
+          <width>161</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>0.00</string>
+        </property>
+       </widget>
       </widget>
      </widget>
      <widget class="QPushButton" name="pushButton">
@@ -4262,23 +4318,50 @@ Equipamientos</string>
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>190</y>
+        <y>230</y>
         <width>131</width>
-        <height>341</height>
+        <height>361</height>
        </rect>
       </property>
      </widget>
      <widget class="QLabel" name="label_107">
       <property name="geometry">
        <rect>
+        <x>40</x>
+        <y>170</y>
+        <width>81</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Seleccionar 
+ Empleados</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_108">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>110</y>
+        <width>111</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Cuil Empleado editando</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="cuil_label">
+      <property name="geometry">
+       <rect>
         <x>30</x>
-        <y>160</y>
+        <y>140</y>
         <width>81</width>
         <height>21</height>
        </rect>
       </property>
       <property name="text">
-       <string>Lista Empleados</string>
+       <string>.</string>
       </property>
      </widget>
     </widget>
@@ -4341,29 +4424,26 @@ Equipamientos</string>
  </widget>
  <tabstops>
   <tabstop>tabWidget</tabstop>
-  <tabstop>radioButton</tabstop>
-  <tabstop>radioButton_2</tabstop>
-  <tabstop>radioButton_3</tabstop>
-  <tabstop>radioButton_4</tabstop>
+  <tabstop>textBrowser</tabstop>
   <tabstop>cuit</tabstop>
   <tabstop>spinBox_6</tabstop>
   <tabstop>tipo_presen</tabstop>
   <tabstop>spinBox</tabstop>
+  <tabstop>comboBox_2</tabstop>
   <tabstop>aceptar</tabstop>
-  <tabstop>checkBox_4</tabstop>
-  <tabstop>pushButton</tabstop>
-  <tabstop>pushButton_2</tabstop>
-  <tabstop>listWidget</tabstop>
   <tabstop>prima</tabstop>
   <tabstop>cuil</tabstop>
-  <tabstop>spinBox_2</tabstop>
   <tabstop>spinBox_4</tabstop>
-  <tabstop>spinBox_3</tabstop>
+  <tabstop>spinBox_2</tabstop>
   <tabstop>spinBox_5</tabstop>
+  <tabstop>spinBox_3</tabstop>
   <tabstop>comboBox</tabstop>
   <tabstop>checkBox</tabstop>
   <tabstop>checkBox_2</tabstop>
   <tabstop>checkBox_3</tabstop>
+  <tabstop>pushButton</tabstop>
+  <tabstop>pushButton_2</tabstop>
+  <tabstop>listWidget</tabstop>
   <tabstop>Bruto</tabstop>
   <tabstop>No_habituales</tabstop>
   <tabstop>SAC1grav</tabstop>
@@ -4413,10 +4493,6 @@ Equipamientos</string>
   <tabstop>alquiler</tabstop>
   <tabstop>serviciodome</tabstop>
   <tabstop>viaticos</tabstop>
-  <tabstop>descuentosley</tabstop>
-  <tabstop>amortizacion</tabstop>
-  <tabstop>CapitalSoc</tabstop>
-  <tabstop>indumentaria</tabstop>
   <tabstop>cuotamed</tabstop>
   <tabstop>fisco</tabstop>
   <tabstop>honorarios_serv</tabstop>
@@ -4425,6 +4501,10 @@ Equipamientos</string>
   <tabstop>otras_caja</tabstop>
   <tabstop>otras_actores</tabstop>
   <tabstop>otras_fondo</tabstop>
+  <tabstop>descuentosley</tabstop>
+  <tabstop>amortizacion</tabstop>
+  <tabstop>CapitalSoc</tabstop>
+  <tabstop>indumentaria</tabstop>
   <tabstop>dedgni</tabstop>
   <tabstop>dedespecial</tabstop>
   <tabstop>dedesp</tabstop>
@@ -4446,6 +4526,7 @@ Equipamientos</string>
   <tabstop>actae</tabstop>
   <tabstop>actadebitos_2</tabstop>
   <tabstop>acta3819_2</tabstop>
+  <tabstop>calculo_2020</tabstop>
   <tabstop>confirmar</tabstop>
  </tabstops>
  <resources/>

@@ -13,6 +13,7 @@ lista_deducciones_art23=[]
 lista_calculo=[]
 lista_txt_1357=[]
 cabecera1=""
+nombrearchivoguardado=""
 
 
 
@@ -196,6 +197,7 @@ class mywindow(QtWidgets.QMainWindow):
         super(mywindow, self).__init__()
 
         self.ui = Ui_MainWindow()
+        
                        
         self.ui.setupUi(self)
         self.ui.prima.setEnabled(False)
@@ -208,6 +210,7 @@ class mywindow(QtWidgets.QMainWindow):
         
         self.ui.aceptar.clicked.connect(self.acepta_periodo)
         
+        self.ui.calculo_2020.clicked.connect(self.calculo_anual_2020)
         self.ui.pushButton.clicked.connect(self.nuevo_empleado)
         self.ui.confirmar.clicked.connect(self.agregar_empleado)
         self.ui.listWidget.itemSelectionChanged.connect(self.cargar_empleado)
@@ -303,6 +306,8 @@ class mywindow(QtWidgets.QMainWindow):
         self.ui.alicuota.setCurrentIndex(0)
         self.ui.alicshor.setCurrentIndex(0)
        
+        
+        
        
     def elimina_empleados(self):
         if (self.ui.listWidget.currentIndex().row()!=-1):
@@ -374,19 +379,7 @@ class mywindow(QtWidgets.QMainWindow):
                 self.ui.spinBox.setValue(0)
                 self.ui.tipo_presen.setValue(0)
                 self.ui.spinBox_6.setValue(2020)
-                self.ui.radioButton.setAutoExclusive(False)
-                self.ui.radioButton.setChecked(False)
-                self.ui.radioButton_2.setAutoExclusive(False)
-                self.ui.radioButton_2.setChecked(False)
-                self.ui.radioButton_3.setAutoExclusive(False)
-                self.ui.radioButton_3.setChecked(False)
-                self.ui.radioButton_4.setAutoExclusive(False)
-                self.ui.radioButton_4.setChecked(False)
-                self.ui.radioButton.setAutoExclusive(True)
-                self.ui.radioButton_2.setAutoExclusive(True)
-                self.ui.radioButton_3.setAutoExclusive(True)
-                self.ui.radioButton_4.setAutoExclusive(True)
-                
+                self.ui.comboBox_2.setCurrentIndex(0)
                 
     
     
@@ -403,6 +396,7 @@ class mywindow(QtWidgets.QMainWindow):
                 if res:
                     QMessageBox.about(self,"Error","El empleado ya esta ingresado")
                 else:
+                    self.ui.cuil_label.setText(cuil)
                     self.ui.prima.setTabVisible(1,True)
                     self.ui.prima.setTabVisible(2,True)
                     self.ui.prima.setTabVisible(3,True)
@@ -412,14 +406,21 @@ class mywindow(QtWidgets.QMainWindow):
                     self.ui.cuil.setEnabled(False)
             
     def cerrar(self):
+        mensaje=QMessageBox()
+        mensaje.setWindowTitle("Advertencia")
+        mensaje.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        mensaje.setText("Seguro que deseas salir ?")
+        result = mensaje.exec_()
+        if (result == QMessageBox.Cancel):
+            return
+     
         sys.exit()
         #exit()
     def acerca(self):
         mensaje="El siguiente programa vesion en desarrollo no esta testeada en su totalidad \n"
         mensaje=mensaje+"Por lo tanto es susceptible de contener errores. \n"
         mensaje=mensaje+"Por ahora no valida todos datos ni realiza control de topes \n"
-        mensaje=mensaje+"Aclarado esto, espero que les sea de utilidad \n"
-        mensaje=mensaje+"Juan Lozano"
+        mensaje=mensaje+"Al ser una version en desarrollo todavia no hay un manual de ayuda"
         QMessageBox.about(self,"Nota",mensaje)
         
         
@@ -447,7 +448,17 @@ class mywindow(QtWidgets.QMainWindow):
             
 
     def abrefichero(self):
+        global nombrearchivoguardado
         global cabecera1
+        if cabecera1!="":
+            mensaje=QMessageBox()
+            mensaje.setWindowTitle("Advertencia")
+            mensaje.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+            mensaje.setText("El fichero en que estas trabajando, no se guardo, seguro de continuar ?")
+            result = mensaje.exec_()
+            if (result == QMessageBox.Cancel):
+                return
+       
         options = QtWidgets.QFileDialog.Options()
         options |= QtWidgets.QFileDialog.DontUseNativeDialog
         fileName, _ = QtWidgets.QFileDialog.getOpenFileName(self,"Abrir Archivo", "","All Files (*);;txt Files (*.txt)", options=options)
@@ -463,14 +474,7 @@ class mywindow(QtWidgets.QMainWindow):
                 self.ui.spinBox.setValue(int(texto[19:21]))
                 tipop=int(texto[32])
                 #print (tipop)
-                if tipop==1:
-                    self.ui.radioButton.setChecked(True)
-                if tipop==2:
-                    self.ui.radioButton_2.setChecked(True)
-                if tipop==3:
-                    self.ui.radioButton_3.setChecked(True)
-                if tipop==4:
-                    self.ui.radioButton_4.setChecked(True)
+                self.ui.comboBox_2.setCurrentIndex(tipop-1)
                 cabecera1=lineas[0]
                 self.ui.listWidget.clear()
             for linea in lineas[1:]:
@@ -513,7 +517,7 @@ class mywindow(QtWidgets.QMainWindow):
             for i in lista_txt_1357:
                 f.write(i+"\n")
             f.close()
-        QMessageBox.about(self,"OK", "Fichero Guardado")
+            QMessageBox.about(self,"OK", "Fichero Guardado")
                                               
             
     def cal_gravada(self):
@@ -532,7 +536,7 @@ class mywindow(QtWidgets.QMainWindow):
         #print (textentero)
         #print (textdecimal)
         total_gravad=round(total_gravad,2)
-        totalsinhoras=round(total_gravad-self.ui.Hsgrav.value()-self.ui.Hsgrav_2.value(),2)
+        totalsinhoras=round(total_gravad-self.ui.Hsgrav.value()*.83,2)
         self.ui.ImpGrav.setText(str(total_gravad))
         self.ui.totalsinhoras.setText(str(totalsinhoras))
         self.cal_deducciones()
@@ -602,23 +606,9 @@ class mywindow(QtWidgets.QMainWindow):
         texto=str(rem_suj)
         texto2=str(rem_suj_sinhoras)
         self.ui.remsujimp.setText(texto)
+        self.ui.remsujimp_2.setText(texto)
         self.ui.remsujsihex.setText(texto2)
-        
-        
-        if self.ui.checkBox_4.isChecked():
-            alicuota,fijo,excedente=calculo_alicuota(rem_suj)
-
-            if (alicuota==5 or alicuota==0):
-                impuesto=0.0
-            else:
-                impuesto=round(fijo+(rem_suj-excedente)/100*alicuota,2)
-                self.ui.impdet.setValue(impuesto)
-                self.ui.alicuota.setCurrentIndex(calculoalic(str(alicuota)))
-        
-            alicuota,fijo,excedente=calculo_alicuota(rem_suj_sinhoras)
-            self.ui.alicshor.setCurrentIndex(calculoalic(str(alicuota)))
-            
-        
+        self.ui.remsujsihex_2.setText(texto2)
         
         self.cel_pago_a_cta()
         
@@ -626,6 +616,7 @@ class mywindow(QtWidgets.QMainWindow):
         totalpagoacta=(self.ui.actadebitos.value()+self.ui.actaretenciones.value()+self.ui.acta3819.value()+self.ui.actabono.value()+
                        self.ui.actainca.value()+self.ui.actaincb.value()+self.ui.actac.value()+self.ui.actad.value()+self.ui.actae.value()
                        +self.ui.acta3819_2.value()+self.ui.actadebitos_2.value())
+        totalpagoacta=round(totalpagoacta,2)
         texto=str(totalpagoacta)
         self.ui.totalacta.setText(texto)
         saldo=self.ui.impdet.value()-self.ui.imprete.value()-totalpagoacta
@@ -633,6 +624,16 @@ class mywindow(QtWidgets.QMainWindow):
         texto=str(saldo)
         self.ui.saldo.setText(texto)
     
+    def calculo_anual_2020(self):
+        rem_suj=float(self.ui.remsujimp.text())
+        rem_suj_sinhoras=float(self.ui.remsujsihex.text())
+        alicuota,fijo,excedente=calculo_alicuota(rem_suj)
+        self.ui.alicuota.setCurrentIndex(calculoalic(str(alicuota)))
+        alicuota,fijo,excedente=calculo_alicuota(rem_suj_sinhoras)
+        impuesto=round(fijo+(rem_suj-excedente)/100*alicuota,2)
+        self.ui.impdet.setValue(impuesto)
+        self.ui.alicshor.setCurrentIndex(calculoalic(str(alicuota)))
+                #self.ui.checkBox_4.setChecked(False)
     
         
     def acepta_periodo(self):
@@ -641,28 +642,28 @@ class mywindow(QtWidgets.QMainWindow):
         valido=validar_cuit(cuit)
         if valido:
             anual,final,informativa,distracto=False,False,False,False
-            if self.ui.radioButton.isChecked():
+            if self.ui.comboBox_2.currentIndex()==0:
                 anual=True
                 tipo="1"
-            if self.ui.radioButton_2.isChecked():
+            if self.ui.comboBox_2.currentIndex()==1:
                 final=True
                 tipo="2"
-            if self.ui.radioButton_3.isChecked():    
+            if self.ui.comboBox_2.currentIndex()==2:    
                 informativa=True
                 tipo="3"
-            if self.ui.radioButton_4.isChecked():    
+            if self.ui.comboBox_2.currentIndex()==3:    
                 distracto=True
                 tipo="4"
             if (anual==False and final==False and informativa==False and distracto==False):
                 QMessageBox.about(self,"Error","Debe Seleccionar un tipo de liquidacion")
             else:
-                if ((self.ui.radioButton.isChecked() or self.ui.radioButton_4.isChecked())
+                if ((anual or distracto)
                     and self.ui.tipo_presen.value()!=0):
                     QMessageBox.about(self,"Error","Si es anual el mes tiene que ser 0")
-                elif ((self.ui.radioButton_2.isChecked() or self.ui.radioButton_3.isChecked())
+                elif ((informativa or final)
                     and self.ui.tipo_presen.value()==0):
                     QMessageBox.about(self,"Error","Si es final/informativa el mes tiene que ser distino de 0")
-                elif ((self.ui.radioButton_2.isChecked() or self.ui.radioButton_3.isChecked())
+                elif ((informativa or final)
                     and self.ui.spinBox_6.value()<2021):
                     QMessageBox.about(self,"Error","Si es final/informativa el periodo tiene que ser mayor al 2020")
                                     
@@ -999,7 +1000,7 @@ class mywindow(QtWidgets.QMainWindow):
     def cargar_empleado(self):
         if self.ui.listWidget.currentIndex().row()!=-1:
             self.cargar_empleado_ok()
-            print (self.ui.listWidget.currentIndex().row())
+            #print (self.ui.listWidget.currentIndex().row())
     
     def cargar_empleado_ok(self):    
         global lista_txt_1357
@@ -1153,8 +1154,16 @@ class mywindow(QtWidgets.QMainWindow):
         self.ui.prima.setTabVisible(6,True)
         self.ui.prima.setTabEnabled(0,True)        
         
-        
-        
+    def closeEvent(self,event):
+        mensaje=QMessageBox()
+        mensaje.setWindowTitle("Advertencia")
+        mensaje.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        mensaje.setText("Seguro que deseas salir ?")
+        result = mensaje.exec_()
+        if (result == QMessageBox.Cancel):
+            event.ignore()
+        if result == QMessageBox.Ok:
+            event.accept()    
     
     
     
@@ -1315,9 +1324,9 @@ def calvalor(texto):
 
 
 app = QtWidgets.QApplication([])
+
 app.setStyle("Fusion")
 application = mywindow()
-
 application.show()
 
 sys.exit(app.exec())
